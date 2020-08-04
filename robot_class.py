@@ -94,10 +94,10 @@ class robot:
         ## TODO: return the final, complete list of measurements
         
         for index in range(len(self.landmarks)):
-            dx = abs((self.x - self.landmarks[index][0])+ self.rand()*self.measurement_noise)
-            dy = abs((self.y - self.landmarks[index][0])+ self.rand()*self.measurement_noise)
+            dx =  (self.landmarks[index][0])-self.x ) + self.rand()*self.measurement_noise)
+            dy =  (self.landmarks[index][0] - self.y) + self.rand()*self.measurement_noise)
             
-            if dx<=self.measurement_range and dy <= self.measurement_range:
+            if self.measurement_range == -1 or (abs(dx) <=self.measurement_range and abs(dy) <= self.measurement_range):
                 measurements.append([index,dx,dy])
         
         return measurements
